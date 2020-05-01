@@ -1,0 +1,1 @@
+new Customer(700,"User1", "user1@mail.com", new Address(88,"Wakad","Pune",411057));
