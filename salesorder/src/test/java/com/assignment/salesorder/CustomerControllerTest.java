@@ -117,7 +117,7 @@ public class CustomerControllerTest {
 
 	@Test
 	public void deleteCustomerTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("/customers/delete/{id}", 21)).andExpect(status().isOk());
+		mockMvc.perform(MockMvcRequestBuilders.delete("/customers/delete/{id}", 26)).andExpect(status().isOk());
 	}
 	 
 }

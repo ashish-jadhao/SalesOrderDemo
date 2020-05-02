@@ -24,31 +24,7 @@ public class ItemServiceImpl implements ItemService {
 		return allItems;
 	}
 
-	@Override
-	public Item saveItem(Item item) {
-		// TODO Auto-generated method stub
-		Item savedItem = itemRepo.saveAndFlush(item);
-		return savedItem;
-	}
 
-	@Override
-	public Item getItem(Integer id) throws ItemException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteItem(Integer id) throws ItemException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Item updateItem(Integer id) throws ItemException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 
 }

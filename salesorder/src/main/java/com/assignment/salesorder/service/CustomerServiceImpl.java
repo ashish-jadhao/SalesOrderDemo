@@ -34,28 +34,32 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer getCustomer(Integer id) throws CustomerException {
 		// TODO Auto-generated method stub
-		Optional<Customer> custOpt = custRepo.findById(id);
+		Customer custOpt = custRepo.findById(id)
+				.orElseThrow(() -> new CustomerException("does not exist"));
 		
-		  if (!(custOpt.isPresent()) || custOpt.get().getCustomerId() <=0) {
-		  
-		  throw new CustomerException("Customer does not exist!"); 
-		  }
+		/*
+		 * if (!(custOpt.isPresent()) || custOpt.get().getCustomerId() <=0) {
+		 * 
+		 * throw new CustomerException("Customer does not exist!"); }
+		 */
 		 
 		
-		return custOpt.get();
+		return custOpt;
 	}
 	
 	@Override
 	public void deleteCustomer(Integer id) throws CustomerException {
 		// TODO Auto-generated method stub
+		
 		/*
-		 * Optional<Customer> customer = custRepo.findById(id); if (customer.get() ==
-		 * null || customer.get().getCustomerId() <=0) {
+		 * Optional<Customer> customer = custRepo.findById(id); if
+		 * (!(customer.isPresent()) || customer.get().getCustomerId() <= 0) {
 		 * 
 		 * throw new CustomerException("Customer does not exist!"); }
 		 * 
 		 * custRepo.delete(customer.get());
 		 */
+
 		custRepo.deleteById(id);
 	}
 

@@ -2,7 +2,9 @@ package com.assignment.salesorder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -46,18 +48,34 @@ public class CustomerServiceImplTest {
 	}
 
 	
-	/*
-	 * @Test public void getCustomerFailedTest() throws CustomerException { Integer
-	 * customerId = 100; when(customerRepository.findById(customerId).get())
-	 * .thenReturn(new Customer(100, "DumyUser", "dummy@mail.com", new Address(88,
-	 * "Wakad", "Pune", 411057)));
-	 * 
-	 * // assertEquals(100,
-	 * customerService.getCustomer(customerId).getCustomerId());
-	 * //assertThat(customerService.getCustomer(customerId).getCustomerId().equals(
-	 * 100)); assertNull(customerService.getCustomer(customerId)); }
-	 */
+	
+	@Test
+	public void getCustomerTest() throws CustomerException {
+		Integer customerId = 100;
+		Customer customer = new Customer(100, "DumyUser", "dummy@mail.com", new Address(88, "Wakad", "Pune", 411057));
+		when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer));
+				
+
+				
+		 assertEquals(100, customerService.getCustomer(customerId).getCustomerId());
+		//assertThat(customerService.getCustomer(customerId).getCustomerId().equals(100));
+		//Optional<Customer> custById = customerRepository.findById(customerId);
+		//assertTrue(custById != null);
+	}
 	 
+	@Test
+	public void getCustomerFailTest() throws CustomerException {
+		Integer customerId = 50;
+		Customer customer = new Customer(100, "DumyUser", "dummy@mail.com", new Address(88, "Wakad", "Pune", 411057));
+		when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer));
+				
+
+				
+		 assertNotEquals(customerId, customerService.getCustomer(customerId).getCustomerId());
+		//assertThat(customerService.getCustomer(customerId).getCustomerId().equals(100));
+		//Optional<Customer> custById = customerRepository.findById(customerId);
+		//assertTrue(custById != null);
+	}
 
 	@Test
 	public void saveCustomerTest() {
@@ -67,27 +85,37 @@ public class CustomerServiceImplTest {
 		assertEquals(customer, customerService.saveCustomer(customer));
 	}
 
-	/*
-	 * @Test public void updateCustomerTest() { Customer customer = new
-	 * Customer(55,"DumyUser", "dummy@mail.com", new
-	 * Address(88,"Wakad","Pune",411057));
-	 * 
-	 * when(customerRepository.saveAndFlush(customer)).thenReturn(customer);
-	 * 
-	 * assertEquals(customer, customerService.saveCustomer(customer));
-	 * 
-	 * Optional<Customer> cust = customerRepository.findById(2);
-	 * when(customerRepository.saveAndFlush(cust.get())).thenReturn(customer);
-	 * assertEquals(customerService.saveCustomer(cust.get()),"NewName"); }
-	 */
+
 
 	@Test
 	public void deleteCustomerTest() throws CustomerException {
-		Customer customer = new Customer(55, "DumyUser", "dummy@mail.com", new Address(88, "Wakad", "Pune", 411057));
+		Customer customer = new Customer(55,"DumyUser", "dummy@mail.com", new Address(88,"Wakad","Pune",411057));
 		customerService.deleteCustomer(customer.getCustomerId());
 		verify(customerRepository, times(1)).deleteById(customer.getCustomerId());
-		;
-		;
-
+		
 	}
+	
+	
+	@Test
+	public void updateCustomerTest() throws CustomerException {
+		Integer customerId = 100;
+		String changedName = "NewName";
+		Customer customer = new Customer(55,"newName", "dummy@mail.com", new Address(88,"Wakad","Pune",411057));
+		when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer));
+	
+		 assertEquals(changedName, customerService.updateCustomer(customerId).getName());
+	}
+	
+	/*
+	 * @Test public void updateCustomerFailTest() throws CustomerException { Integer
+	 * customerId = 100;
+	 * 
+	 * Customer customer = new Customer(55,"newName", "dummy@mail.com", new
+	 * Address(88,"Wakad","Pune",411057));;
+	 * when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer
+	 * ));
+	 * 
+	 * assertEquals(new NullPointerException(),
+	 * customerService.updateCustomer(customerId)); }
+	 */
 }

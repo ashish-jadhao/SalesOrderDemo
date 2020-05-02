@@ -25,9 +25,5 @@ public class ItemController {
 	}
 	
 	
-	@PostMapping("/add")
-	public Item saveItem(@RequestBody Item item) {
-		item = itemService.saveItem(item);
-		return item;
-	}
+
 }
