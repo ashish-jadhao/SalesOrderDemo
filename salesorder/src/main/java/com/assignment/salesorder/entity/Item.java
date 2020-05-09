@@ -3,7 +3,7 @@ package com.assignment.salesorder.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 @Table(name="Item")
@@ -16,6 +16,12 @@ public class Item {
 	private String itenName;
 	//@NotEmpty(message = "price must not be empty")
 	private Integer itemPrice;
+	public Item(int i, String string, int j) {
+		// TODO Auto-generated constructor stub
+		this.itemId = i;
+		this.itenName = string;
+		this.itemPrice = j;
+	}
 	public Integer getItemId() {
 		return itemId;
 	}

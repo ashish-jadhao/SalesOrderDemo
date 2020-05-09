@@ -1,14 +1,12 @@
 package com.assignment.salesorder;
 
-import static org.junit.Assert.assertNotNull;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.awt.PageAttributes.MediaType;
+
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -41,7 +39,7 @@ public class CustomerControllerTest {
 	private WebApplicationContext context;
 	
 	// object to JSON string;
-	private ObjectMapper objMapper = new ObjectMapper();
+	//private ObjectMapper objMapper = new ObjectMapper();
 	
 	//intialize mockMVC before loading class, so that get,post etc methods can be performed
 	
@@ -117,7 +115,7 @@ public class CustomerControllerTest {
 
 	@Test
 	public void deleteCustomerTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("/customers/delete/{id}", 26)).andExpect(status().isOk());
+		mockMvc.perform(MockMvcRequestBuilders.delete("/customers/delete/{id}", 33)).andExpect(status().isOk());
 	}
 	 
 }

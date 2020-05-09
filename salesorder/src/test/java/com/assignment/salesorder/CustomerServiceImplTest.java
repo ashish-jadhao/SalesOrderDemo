@@ -1,8 +1,6 @@
 package com.assignment.salesorder;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.times;
@@ -15,6 +13,7 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -106,16 +105,13 @@ public class CustomerServiceImplTest {
 		 assertEquals(changedName, customerService.updateCustomer(customerId).getName());
 	}
 	
+	
 	/*
 	 * @Test public void updateCustomerFailTest() throws CustomerException { Integer
 	 * customerId = 100;
 	 * 
-	 * Customer customer = new Customer(55,"newName", "dummy@mail.com", new
-	 * Address(88,"Wakad","Pune",411057));;
-	 * when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer
-	 * ));
-	 * 
-	 * assertEquals(new NullPointerException(),
-	 * customerService.updateCustomer(customerId)); }
+	 * Mockito.doThrow(new
+	 * CustomerException("Customer does not exist!")).when(customerRepository.
+	 * findById(customerId)); }
 	 */
 }

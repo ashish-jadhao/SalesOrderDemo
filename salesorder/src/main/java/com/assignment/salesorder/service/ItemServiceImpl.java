@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.assignment.salesorder.entity.Customer;
+
 import com.assignment.salesorder.entity.Item;
-import com.assignment.salesorder.exception.ItemException;
+
 import com.assignment.salesorder.repo.ItemRepository;
 
 

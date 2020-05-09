@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,7 @@ import com.assignment.salesorder.entity.Customer;
 import com.assignment.salesorder.exception.CustomerException;
 import com.assignment.salesorder.service.CustomerService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -46,18 +49,7 @@ public class CustomerController {
 		return cust;
 	}
 
-	/*
-	 * @GetMapping("/show/{id}") public Customer getCustomer(@PathVariable("id")
-	 * Integer id) throws CustomerException {
-	 * 
-	 * //logger.info("Getting a Customer!!!"); Customer customer =
-	 * customerService.getCustomer(id);
-	 * 
-	 * if(customer == null || customer.getCustomerId() <=0) { throw new
-	 * CustomerException("Customer doesn't exist!"); } return customer;
-	 * 
-	 * }
-	 */
+
 	
 	@GetMapping("/show/{id}")
 	public ResponseEntity<Customer> getCustomer(@PathVariable("id") Integer id) throws CustomerException {
